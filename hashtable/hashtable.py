@@ -72,7 +72,7 @@ class HashTable:
         hash = 5381
         for key_byte in key_bytes:
             hash = hash * 33 + key_byte
-            hash &= 0xffffffff
+            hash &= 0xffffffff # Keeping it at 32 bits
         return hash
 
 
@@ -103,6 +103,7 @@ class HashTable:
         entry = HashTableEntry(key, value)
         self.buckets[index].insert_at_head(entry)
         self.size += 1
+
 
 
     def delete(self, key):
